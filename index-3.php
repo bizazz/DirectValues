@@ -10,11 +10,6 @@ $sql = "SELECT merchid, logo, welcome1, welcome2 FROM merchants";
 $result_all = mysqli_query($con,$sql);
 // Associative array
 $row_all = mysqli_fetch_assoc($result_all);
-
-$sql = "SELECT merchid, name, logo, photo, mini FROM merchants LIMIT 3";
-$result_thumb = mysqli_query($con,$sql);
-// Associative array
-$row_thumb = mysqli_fetch_assoc($result_thumb);
 ?>
 
 
@@ -57,43 +52,36 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
 </head>
 
 <body>
-	<!-- top-bar sm md lg -->
-	<div class="row clearfix full-bar background-dark hidden-xs">
-		<div class="container">
-			<div class="col-sm-7 col-md-8 col-lg-9 background-dark">
-				<img src="img/logo-directvalues.png" style="margin-top:10px"/>
-			</div>
-			<div class="col-sm-5 col-md-4 col-lg-3 background-gray">
-				<h3 class="text-right text-white">Get Our Email Update </h3>
-				<h3>
-					<button class="col-sm-12 btn btn-warning btn-default">Sign Up Now</button>
-				</h3>
-			</div>
+<div class="row clearfix background-dark">
+	<div class="container" style="padding:0">
+		<div class="col-xs-12 col-sm-8 column">
+			<h3 style="margin-top:14px">
+				<a href="index.php">
+					<img class="img-responsive" src="img/logo-directvalues.png" />
+				</a>
+			</h3>
 		</div>
-	</div>
-	<!-- top-bar xs -->
-	<div class="row clearfix full-bar background-dark hidden-sm hidden-md hidden-lg">
-		<div class="container">
-			<div class="col-sm-9 background-dark text-center">
-				<img src="img/logo-directvalues.png" style="margin-top:10px"/>
-			</div>
-			<div class="col-sm-12 background-gray">
-				<h3 style="padding-top:10px" class="text-center text-white">Get Our Email Update </h3>
-				<h3>
-					<button class="col-xs-12 btn btn-warning btn-default">Sign Up Now</button>
-				</h3>
-			</div>
-		</div>
-	</div>
-	
-<div class="container">
-	<div class="row clearfix">
-		<div class="page-header" style="padding:0px;margin:0px">
-			<h1>
-				Meet Our Merchants <small>Get Fantastic Offers When You Signup And More On Your Birthday!</small>
+		<div class="col-xs-12 col-sm-4 column">
+			<h3 class="text-white text-right">
+				Get Our Email Update
+			</h3>
+			<h1 style="margin-top:0">
+				<button type="button" class="btn btn-warning btn-block btn-default">Subscribe Now!</button>
 			</h1>
 		</div>
-		<!-- start carousel -->
+		</div>
+	</div>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column background-primary">
+			<div class="col-md-12 column">
+			<h1 class="text-white no-margin no-padding" style="padding-top:40px">Meet Our Merchants</h1>
+			<h3 style="margin-top:8px;margin-bottom:20px;padding-bottom:40px">Get fantastic offers When you signup and more on your birthday!</h3>
+			</div>
+		</div>
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<!-- start carousel -->
 			<div class="jcarousel-wrapper">
                 <div class="jcarousel">
                     <ul>
@@ -120,7 +108,13 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
                 <a href="#" class="jcarousel-control-next"><span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
 			<!-- end carousel -->
-		<div class="col-md-3 column">
+</div>
+</div>	
+<div class="container" style="margin-bottom:20px">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+		<div class="col-md-12 column background-primary">
+			<div class="col-md-3 column background-dark text-white">
 			<h2>
 				Merchant Map
 			</h2>
@@ -160,36 +154,8 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
 					</div>
 				</div>
 			</div>
-		<div class="col-md-9 column">
-			<div class="page-header" style="padding:0px;margin:0px">
-			<h1>
-				Featured Merchants <small></small>
-			</h1>
-			</div>
-				<div class="row">
-				<!-- start thumbs -->
-				<?php  do { ?>
-				<div class="col-md-4">
-					<div class="thumbnail">
-						<img alt="300x200" src="http://directvalues.com/photo/<?php echo $row_thumb['photo']; ?>" style="overflow:hidden" />
-						<div class="caption">
-							<h3>
-								<?php echo $row_thumb['name']; ?>
-							</h3>
-							<p class="mini">
-								<?php echo $row_thumb['mini']; ?>
-							</p>
-							<p>
-								<a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
-							</p>
-						</div>
-					</div>
-				</div>
-				<?php } while ($row_thumb = mysqli_fetch_assoc($result_thumb)); ?>
-				<!--end thumbs -->
-				
-			</div>
-			<div class="tabbable col-md-12" id="tabs-983614">
+			</div>			
+			<div class="tabbable col-md-9" id="tabs-983614">
 				<h1>Categories</h1>
 				<h4>Get fantastic offers When you sign-Up & more on your birthday!</h4>
 				<ul class="nav nav-tabs">
@@ -207,7 +173,7 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
 					<div class="tab-pane active" id="panel-dining">
 						<!-- start individual category box -->
 						<?php  do { ?>
-						<div class="col-lg-2 col-md-4 col-sm-4 col-xs-6 column text-center" id="logo-boxes" style="margin-bottom:16px;margin-top:16px">
+						<div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 column text-center" id="logo-boxes" style="margin-bottom:16px;margin-top:16px">
 							<img class="img-responsive-centered" src="logo/<?php echo $row_dining['logo']; ?>" />
 							<div id="offer-boxes" style="margin-top:0px">
 								<div class="btn-group btn-group-justified column" style="margin-top:8px">
@@ -285,8 +251,15 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
 		</div>
 	</div>
 </div>
-
-
+<div class="row clearfix background-dark bottom-rule">
+	<div class="container" style="padding:0">
+		<div class="col-md-12 column" style="padding-top:20px;padding-bottom:20px">
+			<h1 class="text-warning text-center">Business Owners!</h1>
+			<h4 class="text-white text-center">Reach Out To Your Clients Via DirectValues. Click Here To Contact Us For More Information.
+			</h4>
+		</div>
+		</div>
+	</div>
 <script>
 	$(function() {
     $('.jcarousel')
