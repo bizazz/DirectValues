@@ -7,46 +7,64 @@
  */
 
 /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
-.mini {
-   max-lines: 3;
+.sidebar-arrow {
+	z-index:1000;
+	position: absolute;
+	left: -44px;
+	top: 150px;
 }
-#offer-boxes {
+.meet {
+	margin-top:-60px;
+	width:100%
+	z-index:2000;
+	text-align:center;
+
+}
+.top-bar-btn {
+	margin-left:0px auto;
+}
+.mini {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   line-height: 20px;     /* fallback */
+   max-height: 250px;      /* fallback */
+   -webkit-line-clamp: 6; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+.offer-boxes {
 	width:100%;
 	position: relative;
 	background-color:#ffffff;
-	padding-bottom:4px;
-	padding-left:4px;
-	padding-right:4px;
-	padding-top:2px;
 }
-#offer-boxes h4 {
+.offer-boxes h4 {
 	margin:0;
 	padding:0;
 }
-#offer-boxes h3 {
+.offer-boxes h3 {
 	margin:0;
 	padding:0;
 }
-#corner {
-	position:absolute;
-	left:0px;
-	top:0px;
-}
-#logo-boxes  {
-  position: relative;
-  min-height: 1px;
-  padding-right: 8px;
-  padding-left: 8px;
-}
+
 .text-bold {
 	font-weight:bold;
 }
 .bottom-rule {
 	border-bottom:solid 1px #666666;
 }
+.top-rule {
+	border-top:solid 1px #666666;
+}
+.sides-rule {
+	border-right:solid 1px #666666;
+	border-left:solid 1px #666666;
+}
 .btn-dark {
   background-color: #333333;
-  color: #fff !important;
+  -webkit-font-smoothing: antialiased;
+}
+.btn-gray {
+  background-color: #585757;
   -webkit-font-smoothing: antialiased;
 }
 .text-white {
@@ -56,7 +74,7 @@
 	background-color:#333333;
 }
 .background-gray {
-	background-color:#414141;
+	background-color:#585757;
 }
 .background-white {
 	background-color:#ffffff;
@@ -379,7 +397,9 @@ body {
   line-height: 1.428571429;
   color: #333333;
   background-color: #ffffff;
-  text-transform:capitalize;
+  background-image: url('../img/sky.jpg');
+  background-repeat: repeat-x;
+  background-position: center 100px;
 }
 
 input,
@@ -448,10 +468,10 @@ img {
 }
 
 hr {
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid #000000;
 }
 
 .sr-only {
@@ -889,7 +909,6 @@ pre code {
 	padding:40px;
 	margin:auto;
 	background-color: #FFFFFF;
-	background-image: url('../img/sky.jpg');
 	background-repeat: repeat-x;
 	background-position: center top;
 }
@@ -2499,7 +2518,7 @@ fieldset[disabled] .btn-danger.active {
 
 .btn-success {
   color: #ffffff;
-  background-color: #5cb85c;
+  background-color: #97c900;
   border-color: #4cae4c;
 }
 
@@ -2509,7 +2528,7 @@ fieldset[disabled] .btn-danger.active {
 .btn-success.active,
 .open .dropdown-toggle.btn-success {
   color: #ffffff;
-  background-color: #47a447;
+  background-color: #8ab604;
   border-color: #398439;
 }
 
@@ -2534,7 +2553,7 @@ fieldset[disabled] .btn-success:active,
 .btn-success.disabled.active,
 .btn-success[disabled].active,
 fieldset[disabled] .btn-success.active {
-  background-color: #5cb85c;
+  background-color: #97c900;
   border-color: #4cae4c;
 }
 
@@ -5195,7 +5214,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .label-success {
-  background-color: #5cb85c;
+  background-color: #97c900;
 }
 
 .label-success[href]:hover,
@@ -5509,7 +5528,7 @@ a.thumbnail.active {
 }
 
 .progress-bar-success {
-  background-color: #5cb85c;
+  background-color: #97c900;
 }
 
 .progress-striped .progress-bar-success {

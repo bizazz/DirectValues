@@ -32,7 +32,6 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
 	<!--script src="js/less-1.3.3.min.js"></script-->
 	<!--append ‘#!watch’ to the browser URL, then refresh the page. -->
 	
-	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="jcarousel/examples/responsive/jcarousel.responsive.css" rel="stylesheet">
 	
 	<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
@@ -50,31 +49,22 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
   <link rel="shortcut icon" href="img/favicon.ico">
   
 	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="jcarousel/examples/responsive/jcarousel.responsive.js"></script>
 	<script type="text/javascript" src="jcarousel/dist/jquery.jcarousel.min.js"></script>
 
 </head>
 
 <body>
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-	<!-- /.modal -->
-	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-lg">
-	    <div class="modal-content">
-	      ...
-	    </div>
-	  </div>
-	</div>
+		<div style="color:#333333;height:500px;font-size:5em"><h1 class="text-center">Meet Our Merchants</h1></div>
+
 	<!-- top-bar sm md lg -->
 	<div class="row clearfix full-bar background-dark bottom-rule hidden-xs">
 		<div class="container">
-			<div class="col-sm-7 col-md-8 col-lg-4 background-dark" style="margin-left:-24px">
+			<div class="col-sm-7 col-md-8 col-lg-4 background-dark" style="margin:0">
 				<img src="img/logo-directvalues.png" style="margin-top:10px;margin-bottom:3px"/>
 			</div>
 			<div class="col-md-8" style="padding-bottom:3px">
-				<div class="btn-group pull-right" style="margin-top:44px">
+				<div class="btn-group pull-right" style="margin-top:32px;margin-bottom:32px">
 					<button class="btn  btn-default btn-sm">Featured Merchants</button>
 				  <button class="btn  btn-default btn-sm">Categories</button>
 				  <button class="btn btn-default btn-sm">Merchant Map</button>
@@ -99,30 +89,21 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
 			<div class="col-sm-9 background-dark text-center bottom-rule ">
 				<img src="img/logo-directvalues.png" style="margin-top:10px"/>
 			</div>
-			<div class="col-md-8" style="padding-bottom:3px">
-				<div class="btn-group pull-right" style="margin-top:32px;margin-bottom:32px">
-					<button class="btn  btn-default btn-sm">Featured Merchants</button>
-				  <button class="btn  btn-default btn-sm">Categories</button>
-				  <button class="btn btn-default btn-sm">Merchant Map</button>
-				  <a class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" href="#">
-				    Merchants
-				    <span class="caret"></span>
-				  </a>
-				  <ul class="dropdown-menu">
-				    <li><a href="#">Choice1</a></li>
-				    <li><a href="#">Choice2</a></li>
-				    <li><a href="#">Choice3</a></li>
-				    <li class="divider"></li>
-				    <li><a href="#">Choice..</a></li>
-				  </ul>
-				</div>
+			<div class="col-sm-12 background-gray"> 
+				<form class="form-inline" role="form" style="margin-top:32px;margin-bottom:32px">
+				  <div class="form-group">
+				    <label class="sr-only" for="exampleInputEmail2">Search Merchants</label>
+				    <input type="search" class="form-control" id="exampleInputEmail2" placeholder="Search Merchants">
+				  </div>
+				  <button type="submit" class="btn btn-success btn-default">Search</button>
+				</form>
 			</div>
 		</div>
 	</div>
 	
 <div class="container">
 	<div class="row clearfix">
-		<div class="page-header">
+		<div class="page-header" style="padding:0px;margin:0px">
 			<h1 class="text-white text-center">Meet Our Merchants</h1>
 			<h3 class="text-center no-margin" style="padding-bottom:10px">Get Fantastic Offers When You Signup And More On Your Birthday!</h3>
 		</div>
@@ -159,11 +140,11 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
 		
 		<div class="col-md-3 column background-gray text-white top-rule" style="position:relative">
 			<div class="sidebar-arrow"><img src="img/arrow.png" /></div>
-			<h2 class="text-left text-white">Receive Exclusive Email Offers! </h2>
+			<h2 class="text-left text-white">Recieve Exclusive Email Offers! </h2>
 			<h4 class="text-warning">Direct in your email!</h4>
 			<p class="text-left text-white">Subscribe to our Email Update to receive fantastic discounts, contests and news for local restaurants and businesses.</p>
 				<h3>
-					<button class="col-xs-12 btn btn-warning btn-default">Subscribe!</button>
+					<button class="col-xs-12 btn btn-warning btn-default">Subscribe Now!</button>
 				</h3>
 				<hr />
 			<h3>
@@ -175,11 +156,10 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
 				</div>
 			</div> 
 			<h4 style="color:#ffffff">
-				<a data-toggle="modal" href="http://directvalues.com/merchant_map.php"  data-target="#myModal"	>
+				<a href="http://directvalues.com/merchant_map.php"	>
 					<span class="btn btn-success btn-default btn-block">Merchants Near You&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span></span>
 				</a>
 			</h4>
-			<div class="background-dark" style="padding-right:16px;padding-left:16px;padding-top:1px;padding-bottom:8px;margin-bottom:16px;text-align:justify">
 			<h3>
 				New to this site?
 			</h3>
@@ -192,7 +172,7 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
 					</a>
 					<div id="panel-element-31500" class="panel-collapse collapse">
 						<div class="panel-body">
-							<h3>The Landing Page</h3>
+							<h3>Landing Page</h3>
 							<p>
 							On the landing page you can sign up for our Email Update which contains brand new information and money-saving coupons from local restaurants and businesses. It also contains ways to join contests and win valuable gift certificates. Also, on the landing page you can click on any merchant logo and be transported to their merchant page where you will find much information and printable coupone offers with no sign up neccessary.
 							</p>
@@ -204,7 +184,6 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
 						</div>
 						</div>
 					</div>
-				</div>
 				</div>
 			</div>
 		<div class="col-md-9 column">
