@@ -6,7 +6,6 @@
             .on('jcarousel:reload jcarousel:create', function () {
                 var width = jcarousel.innerWidth();
 
-
                 if (width >= 992) {
                     width = width / 7;
                 
@@ -18,7 +17,7 @@
                  } 
                   else if (width >= 320) {
                     width = width / 2;
-
+                } 
 
                 jcarousel.jcarousel('items').css('width', width + 'px');
             })

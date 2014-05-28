@@ -162,11 +162,7 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
                 <a href="#" class="jcarousel-control-prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
                 <a href="#" class="jcarousel-control-next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 
-
                 <p class="jcarousel-pagination hidden-xs hidden-sm hidden-md"></p>
-
-                <p class="jcarousel-pagination hidden-xs hidden-sm"></p>
-
             </div>
         </div>
 		<!-- end carousel -->
@@ -278,11 +274,7 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
 					<div class="tab-pane active" id="panel-dining">
 						<!-- start dining category box -->
 						<?php  do { ?>
-
 						<div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 column text-center" id="logo-boxes" style="margin-bottom:16px;margin-top:16px">
-
-						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 column text-center" id="logo-boxes" style="margin-bottom:16px;margin-top:16px">
-
 							<img class="img-responsive-centered" src="logo/<?php echo $row_dining['logo']; ?>" />
 							<div id="offer-boxes" style="margin-top:0px">
 								<div class="btn-group btn-group-justified column" style="margin-top:4px">
