@@ -1,6 +1,16 @@
 <?php
 include ('connect.php');
 
+$sql = "SELECT logo, status, merchid FROM merchants WHERE type='service' AND status = 'active' ";
+$result_service = mysqli_query($con,$sql);
+// Associative array
+$row_service = mysqli_fetch_assoc($result_service);
+
+$sql = "SELECT logo, status, merchid FROM merchants WHERE type='retail' AND status = 'active' ";
+$result_retail = mysqli_query($con,$sql);
+// Associative array
+$row_retail = mysqli_fetch_assoc($result_retail);
+
 $sql = "SELECT logo, status, merchid FROM merchants WHERE type='dining' AND status = 'active' ";
 $result_dining = mysqli_query($con,$sql);
 // Associative array
@@ -11,7 +21,7 @@ $result_all = mysqli_query($con,$sql);
 // Associative array
 $row_all = mysqli_fetch_assoc($result_all);
 
-$sql = "SELECT merchid, name, logo, photo, mini FROM merchants LIMIT 3";
+$sql = "SELECT merchid, name, logo, photo, mini FROM merchants LIMIT 2";
 $result_thumb = mysqli_query($con,$sql);
 // Associative array
 $row_thumb = mysqli_fetch_assoc($result_thumb);
@@ -34,7 +44,7 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
 	
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="jcarousel/examples/responsive/jcarousel.responsive.css" rel="stylesheet">
-	
+	<link href="css/map.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/map.css" />
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -152,18 +162,19 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
                 <a href="#" class="jcarousel-control-prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
                 <a href="#" class="jcarousel-control-next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 
-                <p class="jcarousel-pagination"></p>
+                <p class="jcarousel-pagination hidden-xs hidden-sm hidden-md"></p>
             </div>
         </div>
 		<!-- end carousel -->
 		
 		<div class="col-md-3 column background-gray text-white top-rule" style="position:relative">
-			<div class="sidebar-arrow"><img src="img/arrow.png" /></div>
 			<h2 class="text-left text-white">Receive Exclusive Email Offers! </h2>
 			<h4 class="text-warning">Direct in your email!</h4>
 			<p class="text-left text-white">Subscribe to our Email Update to receive fantastic discounts, contests and news for local restaurants and businesses.</p>
 				<h3>
-					<button class="col-xs-12 btn btn-warning btn-default">Subscribe!</button>
+					<button class="col-xs-12 btn btn-warning btn-default">
+						<div class="sidebar-arrow"><img src="img/arrow.png" /></div>
+						Subscribe!</button>
 				</h3>
 				<hr />
 			<h3>
@@ -171,7 +182,14 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
 			</h3>
 			<div class="row clearfix">
 				<div class="col-md-12 column">
-					<iframe src="http://directvalues.com/small-map-for-index-bootstrap.php" height="255px" scrolling="no" style="border:None;overflow:hidden"></iframe>
+					<div id="store-locator-container" style="margin:0px">
+						<div id="map-container" style="width:255px;height:288px;margin:0;padding:0">
+						<div id="map" style="width:255px;height:288px;margin:0;padding:0">
+					</div>
+				</div>
+    </div>
+
+    <div id="distances"></div>
 				</div>
 			</div> 
 			<h4 style="color:#ffffff">
@@ -216,10 +234,12 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
 				<div class="row">
 				<!-- start thumbs -->
 				<?php  do { ?>
-				<div class="col-md-4">
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 					<div class="thumbnail">
-						<img style="width:100%;height:139px;overflow:hidden" src="http://directvalues.com/photo/<?php echo $row_thumb['photo']; ?>"/>
-						<div class="caption">
+						<div style="height:139px;overflow:hidden">
+						<img class="img-responsive" style="width:100%" src="http://directvalues.com/photo/<?php echo $row_thumb['photo']; ?>"/>
+						</div>
+						<div class="caption clearfix">
 							<h3>
 								<?php echo $row_thumb['name']; ?>
 							</h3>
@@ -236,28 +256,28 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
 				<!--end thumbs -->
 				
 			</div>
-			<div class="tabbable col-md-12" id="tabs-983614">
+			<div class="tabbable" id="tabs-983614" style="margin-bottom:40px">
 				<h1>Categories</h1>
-				<h4>Get fantastic offers When you sign-Up & more on your birthday!</h4>
+				<h4>Explore The Merchants Below And Find Great Ways To Save.</h4>
 				<ul class="nav nav-tabs">
 					<li class="active">
-						<a style="font-size:150%" href="#panel-dining" data-toggle="tab">Dining</a>
+						<a style="font-size:130%" href="#panel-dining" data-toggle="tab">Dining</a>
 					</li>
 					<li>
-						<a style="font-size:150%" href="#panel-retail" data-toggle="tab">Retail</a>
+						<a style="font-size:130%" href="#panel-retail" data-toggle="tab">Retail</a>
 					</li>
 					<li>
-						<a style="font-size:150%" href="#panel-services" data-toggle="tab">Services</a>
+						<a style="font-size:130%" href="#panel-services" data-toggle="tab">Services</a>
 					</li>
 				</ul>
 				<div class="tab-content background-dark clearfix">
 					<div class="tab-pane active" id="panel-dining">
-						<!-- start individual category box -->
+						<!-- start dining category box -->
 						<?php  do { ?>
-						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column text-center" id="logo-boxes" style="margin-bottom:16px;margin-top:16px">
+						<div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 column text-center" id="logo-boxes" style="margin-bottom:16px;margin-top:16px">
 							<img class="img-responsive-centered" src="logo/<?php echo $row_dining['logo']; ?>" />
 							<div id="offer-boxes" style="margin-top:0px">
-								<div class="btn-group btn-group-justified column" style="margin-top:8px">
+								<div class="btn-group btn-group-justified column" style="margin-top:4px">
 								<a href="#" class="btn btn-warning btn-xs text-bold" type="button">Sign-Up</button>
 								</a>
 								<a href="#" class="btn btn-success btn-xs text-bold" type="button">More</button>
@@ -266,66 +286,41 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
 							</div>
 						</div>
 						<?php } while ($row_dining = mysqli_fetch_assoc($result_dining)); ?>
-						<!--end individual category box -->
+						<!--end dining category box -->
 					</div>
 					<div class="tab-pane" id="panel-retail">
-						<p>
-							<div class="col-md-3 column">
-								<img alt="140x140" src="http://lorempixel.com/140/140/" />
-								<div class="btn-group">
-									 <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-left"></em> Left</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-center"></em> Center</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-right"></em> Right</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-justify"></em> Justify</button>
-								</div>
+						<!-- start retail category box -->
+						<?php  do { ?>
+						<div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 column text-center" id="logo-boxes" style="margin-bottom:16px;margin-top:16px">
+							<img class="img-responsive-centered" src="logo/<?php echo $row_retail['logo']; ?>" />
+							<div id="offer-boxes" style="margin-top:0px">
+								<div class="btn-group btn-group-justified column" style="margin-top:4px">
+								<a href="#" class="btn btn-warning btn-xs text-bold" type="button">Sign-Up</button>
+								</a>
+								<a href="#" class="btn btn-success btn-xs text-bold" type="button">More</button>
+								</a>
 							</div>
-							<div class="col-md-3 column">
-								<img alt="140x140" src="http://lorempixel.com/140/140/" />
-								<div class="btn-group">
-									 <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-left"></em> Left</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-center"></em> Center</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-right"></em> Right</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-justify"></em> Justify</button>
-								</div>
 							</div>
-							<div class="col-md-3 column">
-								<img alt="140x140" src="http://lorempixel.com/140/140/" />
-								<div class="btn-group">
-									 <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-left"></em> Left</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-center"></em> Center</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-right"></em> Right</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-justify"></em> Justify</button>
-								</div>
-							</div>
-							<div class="col-md-3 column">
-								<img alt="140x140" src="http://lorempixel.com/140/140/" />
-								<div class="btn-group">
-									 <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-left"></em> Left</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-center"></em> Center</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-right"></em> Right</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-justify"></em> Justify</button>
-								</div>
-							</div>
-						</p>
+						</div>
+						<?php } while ($row_retail = mysqli_fetch_assoc($result_retail)); ?>
+						<!--end retail category box -->
 					</div>
 					<div class="tab-pane" id="panel-services">
-						<p>
-							<div class="col-md-3 column">
-								<img class="img-responsive" alt="140x140" src="logo/blackcow_logo.jpg" />
-								<div class="btn-group btn-group-justified">
-									<a href="#" class="btn btn-warning btn-sm" type="button">Info</button>
-									</a>
-									<a href="#" class="btn btn-success btn-sm" type="button">Values</button>
-									</a>
-								</div>
+						<!-- start service category box -->
+						<?php  do { ?>
+						<div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 column text-center" id="logo-boxes" style="margin-bottom:16px;margin-top:16px">
+							<img class="img-responsive-centered" src="logo/<?php echo $row_service['logo']; ?>" />
+							<div id="offer-boxes" style="margin-top:0px">
+								<div class="btn-group btn-group-justified column" style="margin-top:4px">
+								<a href="#" class="btn btn-warning btn-xs text-bold" type="button">Sign-Up</button>
+								</a>
+								<a href="#" class="btn btn-success btn-xs text-bold" type="button">More</button>
+								</a>
 							</div>
-								<div class="col-md-3 column">
-									<img alt="140x140" src="http://lorempixel.com/140/140/" />
-									<div class="btn-group">
-										 <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-left"></em> Left</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-center"></em> Center</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-right"></em> Right</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-justify"></em> Justify</button>
-									</div>
-								</div>
-								<div class="col-md-3 column">
-									<img alt="140x140" src="http://lorempixel.com/140/140/" />
-									<div class="btn-group">
-										 <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-left"></em> Left</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-center"></em> Center</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-right"></em> Right</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-justify"></em> Justify</button>
-									</div>
-								</div>
-								<div class="col-md-3 column">
-									<img alt="140x140" src="http://lorempixel.com/140/140/" />
-									<div class="btn-group">
-										 <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-left"></em> Left</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-center"></em> Center</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-right"></em> Right</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-justify"></em> Justify</button>
-									</div>
-								</div>
-						</p>
+							</div>
+						</div>
+						<?php } while ($row_service = mysqli_fetch_assoc($result_service)); ?>
+						<!--end service category box -->
 					</div>
 				</div>
 			</div>
@@ -338,6 +333,15 @@ $row_thumb = mysqli_fetch_assoc($result_thumb);
 //carousel script
 
 </script>
+<script src="http://maps.google.com/maps/api/js?sensor=false&region=US"></script>
+<script src="js/jquery.storelocator-index.js"></script>
+
+<script>
+    $(function() {
+      $('#map-container').storeLocator({ 'maxDistance': true, 'slideMap' : false, 'defaultLoc': true, 'defaultLat': '44.9207462', 'defaultLng' : '-93.3935366' });
+    });
+</script>
+      
 <script type="text/javascript">
 //remove html from .mini div
 	$(".mini * ").each(function() {
